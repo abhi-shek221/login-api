@@ -1,0 +1,27 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@firebase/auth": "^1.7.4",
+    "@firebase/firestore": "^4.6.3",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "firebase": "^10.12.2",
+    "firebase-admin": "^12.1.1",
+    "nodemon": "^3.1.1",
+    "password-hash": "^1.2.2",
+    "path": "^0.12.7",
+    "uuid": "^9.0.1"
+  }
+}
