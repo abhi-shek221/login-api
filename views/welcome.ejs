@@ -6,17 +6,101 @@
     <title>Welcome</title>
     <link rel="stylesheet" href="/styles.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
         .username {
+            margin-top: 20px;
+        }
+        .celebrity {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .celebrity h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .celebrity p {
+            margin: 5px 0;
+        }
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
             display: block;
-            margin-top: 100px; 
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Dashboard,<%= username %>!</h1> 
+    <div class="container">
+        <h1>Welcome to the Dashboard, <%= username %>!</h1>
+        <h2>You have successfully logged in.</h2>
 
-    <span class="username">
-    <h1>You have successfully logged in.</h1>
-    </span> 
+        <form action="/getCelebrity" method="POST">
+            <label for="celebrity">Enter Celebrity Name:</label>
+            <input type="text" id="celebrity" name="celebrity" required>
+            <button type="submit">Get Details</button>
+        </form>
+
+        <% if (error) { %>
+            <div class="error"><%= error %></div>
+        <% } else if (celebrity) { %>
+            <div class="celebrity">
+                <h2>Celebrity Details:</h2>
+                <p><strong>Name:</strong> <%= celebrity.name %></p>
+                <p><strong>Gender:</strong> <%= celebrity.gender %></p>
+                <p><strong>Nationality:</strong> <%= celebrity.nationality %></p>
+                <p><strong>Occupation:</strong> <%= celebrity.occupation.join(', ') %></p>
+                <p><strong>Age:</strong> <%= celebrity.age %></p>
+            </div>
+        <% } %>
+    </div>
 </body>
 </html>
